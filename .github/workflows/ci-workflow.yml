@@ -11,7 +11,7 @@ on:
 
 jobs:
   test:
-    uses: Guistarcks/workflow-reutilizable-demo/.github/workflows/test.yml@main
+    uses: Guistarcks/workflow-reutilizable-demo/.github/workflows/test-unitarios.yml@main
     with:
       node-version: '18.x'
 
