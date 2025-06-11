@@ -1,0 +1,29 @@
+name: Node.js CI Workflow
+
+on:
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
+  # pull_request:
+  #   branches:
+  #     - main
+
+jobs:
+  test:
+    uses: Guistarcks/workflow-reutilizable-demo/.github/workflows/test.yml@main
+    with:
+      node-version: '18.x'
+
+  build:
+    needs: test
+    uses: Guistarcks/workflow-reutilizable-demo/.github/workflows/build.yml@main
+    with:
+      node-version: '18.x'
+
+  upload-artifact:
+    needs: build
+    uses: Guistarcks/workflow-reutilizable-demo/.github/workflows/upload-artifact.yml@main
+    with:
+      artifact-name: 'node-app-artifacts'
+      artifact-path: '.' # Adjust to 'dist' if you have a build output folder
